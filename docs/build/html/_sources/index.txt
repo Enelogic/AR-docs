@@ -1,17 +1,23 @@
 Allocatie & Reconciliatie documentatie
 ==================================================================
 
-Contents:
+Inhoud van deze documentatie
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Web-app documentatie
+  :maxdepth: 2
+  :caption: App documentatie
 
-   web-app/index
+  web-app/index
 
-Indices and tables
-==================
+.. toctree::
+  :maxdepth: 2
+  :caption: Api documentatie
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+  api/index
+
+
+.. toctree::
+  :maxdepth: 2
+  :caption: Csv export documentatie
+
+  csv-export/index

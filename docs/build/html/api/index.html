@@ -1,0 +1,267 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>API Documentatie &mdash; Allocatie &amp; Reconciliatie documentatie 0.1 documentatie</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Allocatie &amp; Reconciliatie documentatie 0.1 documentatie" href="../index.html"/>
+        <link rel="prev" title="Gebruik van de web app" href="../web-app/use.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Allocatie & Reconciliatie documentatie
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">App documentatie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../web-app/index.html">Web-applicatie documentatie</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Api documentatie</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">API Documentatie</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#authenticatie">Authenticatie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#endpoints">Endpoints</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Csv export documentatie</span></p>
+<ul class="simple">
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Allocatie & Reconciliatie documentatie</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>API Documentatie</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/api/index.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="api-documentatie">
+<h1>API Documentatie<a class="headerlink" href="#api-documentatie" title="Permalink naar deze titel">¶</a></h1>
+<div class="section" id="authenticatie">
+<h2>Authenticatie<a class="headerlink" href="#authenticatie" title="Permalink naar deze titel">¶</a></h2>
+<p>Op dit moment is het enkel mogelijk te autheniceren tegen de API d.m.v. een JWT (Json WebToken).
+De JSON Webtoken kan je ophalen door het uit voeren van de volgende HTTP request.</p>
+<dl class="post">
+<dt id="post-https---sfu.eu.auth0.com-oauth-ro">
+<code class="descname">POST </code><code class="descname">https://sfu.eu.auth0.com/oauth/ro</code><a class="headerlink" href="#post-https---sfu.eu.auth0.com-oauth-ro" title="Permalink naar deze definitie">¶</a></dt>
+<dd><p>Authenticate and get JWT token.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Form Parameters:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><strong>client_id</strong> &#8211; JeoeZHZWluOY7xbV2sQ7np3mYLxbBIfa</li>
+<li><strong>username</strong> &#8211; <em>&lt;gebruikersnaam van gebruiker&gt;</em></li>
+<li><strong>password</strong> &#8211; <em>&lt;wachtwoord van gebruiker&gt;</em></li>
+<li><strong>connection</strong> &#8211; AllocationReconcilation</li>
+<li><strong>grant_type</strong> &#8211; password</li>
+<li><strong>scope</strong> &#8211; openid</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Voorbeeld response</strong>:</p>
+<blockquote>
+<div><div class="highlight-http"><div class="highlight"><pre>200 OK
+Vary: Accept
+Content-Type: application/json
+
+{
+  &quot;id_token&quot;: &quot;eyJ0eXfsETRHSFSDiLCJhbGciOiJIUzI1NiJ9.eyJpc3MifSRHYUKI&amp;&amp;$%gdrger0vIiwic3ViIjoiYXV0aDB8NTdmZGZmYzc0OTM4NmFiOTM5ZjVhN2U1IiwiYXVkIjoiSmVvZVpIWldsdU9ZN3hiVjJzUTducDNtWUx4YkJJZmEiLCJleHAiOjE0NzYzMTAyNzMsImlhdCI6MTQ3NjI3NDI3M30.WiQqdAFFGREGRTMPELOGeSdmkmGK-0QU5wu-MgfsI&quot;,
+  &quot;access_token&quot;: &quot;mqvOoDmDG3kXZJMj&quot;,
+  &quot;token_type&quot;: &quot;bearer&quot;
+}
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="endpoints">
+<h2>Endpoints<a class="headerlink" href="#endpoints" title="Permalink naar deze titel">¶</a></h2>
+<p>Verplichte headers:</p>
+<ul class="simple">
+<li><cite>Authorization</cite>, de waarde hiervan is &#8216;Baerer&#8217; + de waarde van <em>id_token</em> uit de authenticatie. (bijv. &#8216;Authorization: Baerer 1234567890.ABCDEF.HIJKLMNOP&#8217;)</li>
+<li><cite>X-Accept-Version</cite>, de versie van de API die je wil bevragen (laatste versie == 1)</li>
+</ul>
+<p>Optionele headers:</p>
+<ul class="simple">
+<li><cite>Accept</cite> (standaard &#8216;application/json&#8217;), hiermee bepaal je in welk format je de content terug wil ontvangen. Momenteel is enkel &#8216;application/json&#8217; en &#8216;application/xml&#8217; ondersteund.</li>
+</ul>
+<p><strong>Alle endpoints van de API zijn terug te vinden op</strong> <a class="reference external" href="https://ar.sfu.io/api/doc">https://ar.sfu.io/api/doc</a>.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../web-app/use.html" class="btn btn-neutral" title="Gebruik van de web app" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Wesley Coppens.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
